@@ -5,9 +5,9 @@ function Nav (){
     return(
         <nav className='flex'>
             <ul className='flex'>
-                <li><Link to={"/"}>Home</Link></li>
-                <li><Link to={"/about"}>About</Link></li>
-                <li><Link to={"/contact"}>Contact</Link></li>
+                <li><Link to={"portfolio/"}>Home</Link></li>
+                <li><Link to={"portfolio/about"}>About</Link></li>
+                <li><Link to={"portfolio/contact"}>Contact</Link></li>
             </ul>
         </nav>
     )

@@ -17,9 +17,9 @@ class App extends Component{
       <Nav />
         <Container>
         <Routes>
-          <Route path='/' exact Component={Home} />
-          <Route path='/about' Component={About} />
-          <Route path='/contact' Component={Contact} />
+          <Route path='portfolio/' exact Component={Home} />
+          <Route path='portfolio/about' Component={About} />
+          <Route path='portfolio/contact' Component={Contact} />
         </Routes>
         </Container>
         <Particles 

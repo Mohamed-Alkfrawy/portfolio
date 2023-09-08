@@ -1,2 +1,2 @@
-### That's My Portflio
+### That's My Portfolio
 developed in Reqct.Js  

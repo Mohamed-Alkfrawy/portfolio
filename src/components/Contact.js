@@ -33,29 +33,31 @@ function Form() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [sent, setSent] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const messageContent = `name : ${name} .
-    email : ${email}.
-    message : ${message}.`;
+    const messageContent = `
+    name: ${name}.
+    email: ${email}.
+    message: ${message}.`;
 
     const config = {
-      phone: 201153889729, // International format
-      apikey: 2700935,
+      phone: 201149080720, // International format
+      apikey: 6960877,
       message: messageContent,
     };
-
+    const proxy = "https://cors-anywhere.herokuapp.com/";
     const url = `https://api.callmebot.com/whatsapp.php?phone=${
       config.phone
     }&text=${encodeURIComponent(config.message)}&apikey=${config.apikey}`;
 
     try {
-      const response = await fetch(url);
+      const response = await fetch(proxy + url);
 
       if (response.ok) {
-        console.log("Success: Message sent!");
+        setSent(true);
       } else {
-        console.error("Status Error:", response.status);
+        setSent(false);
       }
     } catch (error) {
       console.error("Network Error:", error);
@@ -65,6 +67,8 @@ function Form() {
   return (
     <form onSubmit={handleSubmit} className="flex">
       <input
+        disabled={sent}
+        style={{ opacity: sent ? 0.5 : 1 }}
         type="text"
         value={name}
         onChange={(e) => setName(e.target.value)}
@@ -73,6 +77,8 @@ function Form() {
         required
       />
       <input
+        disabled={sent}
+        style={{ opacity: sent ? 0.5 : 1 }}
         type="email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
@@ -81,13 +87,17 @@ function Form() {
         required
       />
       <textarea
+        disabled={sent}
+        style={{ opacity: sent ? 0.5 : 1 }}
         name="message"
         value={message}
         onChange={(e) => setMessage(e.target.value)}
         placeholder="Message :"
         required
       />
-      <button type="submit">Contact Me</button>
+      <button disabled={sent} style={{ opacity: sent ? 0.5 : 1 }} type="submit">
+        {sent ? "sent " : "Contact Me"}
+      </button>
     </form>
   );
 }

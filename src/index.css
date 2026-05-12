@@ -1,7 +1,7 @@
 body {
   margin: 0;
   background-color: #000207;
-  scroll-behavior: smooth;
+  scroll-behavior: smooth !important;
 }
 @import url("https://fonts.googleapis.com/css2?family=Cause:wght@100..900&display=swap");
 * {

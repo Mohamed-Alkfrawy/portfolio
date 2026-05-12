@@ -24,7 +24,7 @@ h1 {
 .container {
   width: 100%;
   height: 100%;
-  padding: 0 15px;
+  padding: 0 10px;
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -62,6 +62,7 @@ nav a {
   font-size: 16px;
   font-weight: 400;
   position: relative;
+  cursor: pointer;
 }
 nav a::after {
   content: "";
@@ -104,8 +105,8 @@ nav a:hover::after {
 }
 
 .PI-container img {
-  scale: 1.6;
-  translate: 40px 90px;
+  scale: 1.1;
+  translate: 3px 30px;
 }
 .home-text-box {
   flex-direction: column;

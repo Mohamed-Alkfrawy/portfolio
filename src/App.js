@@ -1,5 +1,4 @@
 import { Component } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import About from "./components/About";
 import Home from "./components/Home";
@@ -13,7 +12,7 @@ import Projects from "./components/Projects";
 class App extends Component {
   render() {
     return (
-      <BrowserRouter>
+      <>
         <Nav />
         <Container>
           <Home />
@@ -27,7 +26,7 @@ class App extends Component {
           init={particlesInit}
           options={particlesCOnfig}
         />
-      </BrowserRouter>
+      </>
     );
   }
 }

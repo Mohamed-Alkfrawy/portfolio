@@ -1,13 +1,12 @@
-import React, { Fragment } from "react";
-import emailjs from "@emailjs/browser";
 import { ReactComponent as Linkedin } from "../imgs/svgs/linkedin.svg";
 import { ReactComponent as Youtube } from "../imgs/svgs/youtube.svg";
 import { ReactComponent as Github } from "../imgs/svgs/github.svg";
+import { useState } from "react";
 
 function Contact() {
   return (
     <div className="contact" id="contact">
-      <h2>My Contacts ...</h2>
+      <h2>Contact Me</h2>
 
       <Form />
       <hr />
@@ -31,21 +30,63 @@ function Contact() {
 }
 
 function Form() {
-  const handleSubmit = (e) => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    emailjs.sendForm(
-      "service_st6xlp5",
-      "template_citt3z6",
-      e.target,
-      "DAnv780_uDtkwAkKP"
-    );
+    const messageContent = `name : ${name} .
+    email : ${email}.
+    message : ${message}.`;
+
+    const config = {
+      phone: 201153889729, // International format
+      apikey: 2700935,
+      message: messageContent,
+    };
+
+    const url = `https://api.callmebot.com/whatsapp.php?phone=${
+      config.phone
+    }&text=${encodeURIComponent(config.message)}&apikey=${config.apikey}`;
+
+    try {
+      const response = await fetch(url);
+
+      if (response.ok) {
+        console.log("Success: Message sent!");
+      } else {
+        console.error("Status Error:", response.status);
+      }
+    } catch (error) {
+      console.error("Network Error:", error);
+    }
   };
 
   return (
     <form onSubmit={handleSubmit} className="flex">
-      <input type="text" name="user_name" placeholder="Name :" required />
-      <input type="email" name="email_from" placeholder="Email :" required />
-      <textarea name="message" placeholder="Message :" required />
+      <input
+        type="text"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        name="user_name"
+        placeholder="Name :"
+        required
+      />
+      <input
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        name="email_from"
+        placeholder="Email :"
+        required
+      />
+      <textarea
+        name="message"
+        value={message}
+        onChange={(e) => setMessage(e.target.value)}
+        placeholder="Message :"
+        required
+      />
       <button type="submit">Contact Me</button>
     </form>
   );

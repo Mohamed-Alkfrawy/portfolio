@@ -1,34 +1,34 @@
-import { Component } from 'react';
-import {BrowserRouter , Route, Routes} from 'react-router-dom'
-import './App.css';
-import About from './components/About';
-import Home from './components/Home'
-import Particles from 'react-tsparticles';
-import {particlesCOnfig , particlesInit} from './config/particlesConfig';
-import Nav from './components/Nav';
-import Container from './components/Container';
-import Contact from './components/Contact'
+import { Component } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import "./App.css";
+import About from "./components/About";
+import Home from "./components/Home";
+import Particles from "react-tsparticles";
+import { particlesCOnfig, particlesInit } from "./config/particlesConfig";
+import Nav from "./components/Nav";
+import Container from "./components/Container";
+import Contact from "./components/Contact";
+import Projects from "./components/Projects";
 
-class App extends Component{
-
-  render(){
+class App extends Component {
+  render() {
     return (
       <BrowserRouter>
-      <Nav />
+        <Nav />
         <Container>
-        <Routes>
-          <Route path='/' exact Component={Home} />
-          <Route path='/about' Component={About} />
-          <Route path='/contact' Component={Contact} />
-        </Routes>
+          <Home />
+          <About />
+          <Projects />
+          <Contact />
         </Container>
-        <Particles 
-        id="tsparticles"
-        init={particlesInit}
-        options={particlesCOnfig}
+        <footer>All copyright are preserved - Mohamed Alkfrawy</footer>
+        <Particles
+          id="tsparticles"
+          init={particlesInit}
+          options={particlesCOnfig}
         />
-        </BrowserRouter>
-    )
+      </BrowserRouter>
+    );
   }
 }
 
